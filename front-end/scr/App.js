@@ -1,13 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import './App.css'
 
 
 export default function App() {
-    const [item, setItem] = useState("")
-    const handleChange = (event) => {
-    setItem(event.target.value);
-  }
+    const [searchResults, setSearchResults] = useState([]);
+
+    
+ const handleSearch = (data) => {
+    setSearchResults(data);
+  };
 
     const search = (event) => {
     event.preventDefault();
