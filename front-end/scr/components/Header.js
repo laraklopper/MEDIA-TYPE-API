@@ -6,7 +6,6 @@ export default function Header() {
     <div>
         <header id="header">
             <h1 className="h1">Itunes Search API</h1> 
-            <SearchBar/>
         </header>
     </div>
   )
