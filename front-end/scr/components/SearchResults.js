@@ -2,7 +2,7 @@ import React from 'react';// Import the React module to use React functionalitie
 import ListGroup from 'react-bootstrap/ListGroup';//Import Listgroup from bootstrap library
 
 //SearchResults function component
-export default function SearchResults ({results});//Export function component
+export default function SearchResults ({results}){;//Export function component
 
 return(
   <div>
@@ -19,3 +19,4 @@ return(
       </ListGroup>
   </div>
 )
+}
