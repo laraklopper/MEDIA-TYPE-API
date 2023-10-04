@@ -1,10 +1,14 @@
 import React, { useState } from 'react';// Import the React module to use React functionalities
-import Button from 'react-bootstrap/Button';
+import Button from 'react-bootstrap/Button';//Import button component from bootstrap library
 
 export default function ApiCall({ onSearch }) {
+    //=====================STATE VARIABLES============================
   const [name, setName] = useState('');
   const [mediaType, setMediaType] = useState('');
 
+  // useEffect hook to fetch data when the API component mounts
+
+//------------  
   const handleChangeName = (event) => {
     setName(event.target.value);
   };
@@ -35,6 +39,7 @@ export default function ApiCall({ onSearch }) {
       console.error('Error fetching data:', error.message);
     }
   };
+//============================JSX RENDERING===================================
 
   return (
     <div>
@@ -48,13 +53,17 @@ export default function ApiCall({ onSearch }) {
         />
         <label className="label">MEDIA TYPE</label>
         <input
-          type="text"
-          onChange={handleChangeMediaType}
+          type="text"//Input type
+          onChange={handleChangeMediaType}//Event handler
           placeholder="Media type"
           value={mediaType}
-            className="label"
+            className="label"//css reference
         />
-        <Button type="submit" variant="primary">
+        <Button 
+              type="submit" //Button type
+              variant="primary"//bootstrap variant
+              className="searchBtn"//css reference
+                >
           SEARCH
         </Button>
       </form>
