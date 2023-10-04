@@ -16,3 +16,5 @@
 ## LINK TO DEPLOYED APP
 
 ## REFERENCES
+- https://www.npmjs.com/package/helmet?activeTab=readme
+- https://developer.apple.com/documentation/applemusicapi/handling_requests_and_responses
