@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-// import Stack from 'react-bootstrap/Stack';
 import Button from 'react-bootstrap/Button';
 import './App.css'
 
@@ -25,31 +24,33 @@ export default function App() {
             </Col>
           </Row>
         </header>
-        // section1
-    <section>
+          {/* section1 */}
+   <section id='section1'>
+          {/* Row2 */}
+          
+          <Row>
+            <Col>API</Col>
+            <Col></Col>
+            <Col>
+              <form id='searchForm' onClick={search}>
 
-    </section>
+                <input
+                  type='text'
+                  placeholder='search'
+                  value={item}
+                  onChange={handleChange}
+                />
+
+
+                <Button type='submit' variant="primary" id='searchBtn'>
+                  SEARCH
+                </Button>
+
+              </form>  
+            </Col>
+          </Row>
+        </section>
       </Container>
-     <div>
-      <Stack direction="horizontal" gap={3} id='stack'>
-        <div className="p-2" id='heading'><Header /></div>
-        <form id='searchForm' onClick={search}>
-          <div className="p-2 ms-auto" id='formInput'>
-            <input
-              type='text'
-              placeholder='search'
-              value={item}
-              onChange={handleChange}
-            />
-          </div>
-          // <div className="p-2" id='searchButton'>
-            <Button type='submit' variant="primary" id='searchBtn'>
-              SEARCH
-            </Button>
-          </div>
-        </form>     
-      </Stack>
-      </div>
     </>
   )
 }
