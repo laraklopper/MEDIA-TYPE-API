@@ -1,40 +1,58 @@
 import React, { useState } from 'react';// Import the React module to use React functionalities
 import Button from 'react-bootstrap/Button';
 
-export default function SearchBar({ onSearch }) {
-  const [query, setQuery] = useState('');
+export default function ApiCall({ onSearch }) {
+  const [name, setName] = useState('');
+  const [mediaType, setMediaType] = useState('');
 
-  const handleChange = (event) => {
-    setQuery(event.target.value);
+  const handleChangeName = (event) => {
+    setName(event.target.value);
+  };
+
+  const handleChangeMediaType = (event) => {
+    setMediaType(event.target.value);
   };
 
   const handleSearch = async (event) => {
     event.preventDefault();
 
     try {
-      // Assuming the API endpoint is 'https://api.example.com/search'
-      const response = await fetch(`https://api.example.com/search?query=${query}`);
-      
+      // Make an asynchronous request to the API
+      const response = await fetch(`https://api.example.com/search?name=${name}&mediaType=${mediaType}`);
+
+      // Check if the response status is okay
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
 
+      // Extract data from the response
       const data = await response.json();
-      onSearch(data); // Pass the fetched data to the parent component
+
+      // Call the onSearch prop with the fetched data
+      onSearch(data);
     } catch (error) {
+      // Handle errors during the API request
       console.error('Error fetching data:', error.message);
     }
   };
 
   return (
     <div>
-      <form onSubmit={handleSearch}>
-        <label>SEARCH TERM</label>
+      <form id="form" onSubmit={handleSearch}>
+        <label className='label'>NAME</label>
         <input
           type="text"
-          placeholder="Search..."
-          value={query}
-          onChange={handleChange}
+          placeholder="name"
+          value={name}
+          onChange={handleChangeName}
+        />
+        <label className="label">MEDIA TYPE</label>
+        <input
+          type="text"
+          onChange={handleChangeMediaType}
+          placeholder="Media type"
+          value={mediaType}
+            className="label"
         />
         <Button type="submit" variant="primary">
           SEARCH
