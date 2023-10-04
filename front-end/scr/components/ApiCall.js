@@ -1,44 +1,45 @@
-import React, { useState } from 'react'
-import TextField from '@material-ui/core/TextField';
-import Autocomplete from '@material-ui/lab/Autocomplete';
- 
-const App = () => {
- 
-  const [myOptions, setMyOptions] = useState([])
- 
-  const getDataFromAPI = () => {
-    console.log("Options Fetched from API")
- 
-    fetch('http://dummy.restapiexample.com/api/v1/employees').then((response) => {
-      return response.json()
-    }).then((res) => {
-      console.log(res.data)
-      for (var i = 0; i < res.data.length; i++) {
-        myOptions.push(res.data[i].employee_name)
+import React, { useState } from 'react';// Import the React module to use React functionalities
+import Button from 'react-bootstrap/Button';
+
+export default function SearchBar({ onSearch }) {
+  const [query, setQuery] = useState('');
+
+  const handleChange = (event) => {
+    setQuery(event.target.value);
+  };
+
+  const handleSearch = async (event) => {
+    event.preventDefault();
+
+    try {
+      // Assuming the API endpoint is 'https://api.example.com/search'
+      const response = await fetch(`https://api.example.com/search?query=${query}`);
+      
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
       }
-      setMyOptions(myOptions)
-    })
-  }
- 
+
+      const data = await response.json();
+      onSearch(data); // Pass the fetched data to the parent component
+    } catch (error) {
+      console.error('Error fetching data:', error.message);
+    }
+  };
+
   return (
-    <div style={{ marginLeft: '40%', marginTop: '60px' }}>
-      <h3>Greetings from GeeksforGeeks!</h3>
-      <Autocomplete
-        style={{ width: 500 }}
-        freeSolo
-        autoComplete
-        autoHighlight
-        options={myOptions}
-        renderInput={(params) => (
-          <TextField {...params}
-            onChange={getDataFromAPI}
-            variant="outlined"
-            label="Search Box"
-          />
-        )}
-      />
+    <div>
+      <form onSubmit={handleSearch}>
+        <label>SEARCH TERM</label>
+        <input
+          type="text"
+          placeholder="Search..."
+          value={query}
+          onChange={handleChange}
+        />
+        <Button type="submit" variant="primary">
+          SEARCH
+        </Button>
+      </form>
     </div>
   );
 }
- 
-export default App
