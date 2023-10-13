@@ -60,7 +60,9 @@ It is the software intermediary that delivers a request to the server and then r
 
 ## TASK API LINK
 https://itunes.apple.com/search?term=${term}+&entity=${type}
+
 ## INSTALLED DEPENDENCIES
+**DEPENDENCIES INSTALLED IN THE TERMINAL:**
 
 - express (**npm install express**)
 - nodemon (**npm install nodemon**)
