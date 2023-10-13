@@ -7,7 +7,7 @@ export default function App() {//Export default function component
   //========== State variables=====================
    const [error, setError] = useState(null);// State for error handling
   const [term, setTerm] = useState('');// State for the term input
-  const [type, setType] = useState('');// State for the type input
+  const [type, setType] = useState(mediaTypes[0].value);// State for the type input
   const [data, setData] = useState([]);// State to store fetched data
   const [isLoaded, setIsLoaded] = useState(false);// State to track loading status
 
@@ -35,8 +35,8 @@ export default function App() {//Export default function component
     fetchData();//Call the fetchdata function
   }, []);// Empty dependency array means this effect runs only once after the initial render
 
-  //=============EVENT LISTENERS====================
-
+  //=============REQUEST FUNCTIONS====================
+//----------------DEFAULT GET REQUEST-------------------------------
   // Handle the search form submission
   const handleSearch = async (event) => {
     event.preventDefault();
@@ -50,6 +50,8 @@ export default function App() {//Export default function component
 
       const searchData = await response.json();
       setData(searchData.results);
+      setError(null); // Clear the error on successful fetch
+      console.log(searchData);
     } 
       //Handle errors 
       catch (error) {// Result if an error occurs during the fetch
@@ -58,6 +60,42 @@ export default function App() {//Export default function component
     }
   };
 
+  //-----------------POST REQUEST-----------------------
+  // Function to add new item to the list
+  const handleAddItem = async () => {//Define asynchronous function
+    try {
+      const newItem = {//new Item to be added
+        artistName: '',
+        trackId: '',
+        kind: '',
+        trackName: '',
+      };
+      const response = await fetch('http://localhost:3001/api/add-item', {
+        method: 'POST',//Request method
+        headers: {
+          'Content-Type': 'application/json',//Type of content being passed
+        },
+        body: JSON.stringify({//Convert the JavaScript object{ term, type, newItem} into a JSON string.
+          // The string is the data sent to the request body
+          // term, type, and newItem are variables that contain data to be sent to the server.
+          term: term, //Url query parameter 
+          type: type, //URL query parameter
+          newItem: newItem, //newItem is an object representing the new item to be added. 
+        }),
+      });
+
+      // Conditional rendering to check the 'ok' property of the 'response' object is false.
+      if (!response.ok) {
+        throw new Error('Failed to add new item');
+      }
+        const addedItem = await response.json();
+      setData((prevData) => [...prevData, addedItem]); //Add a new item to the existing data
+      //prevData is a parameter representing the previous state. The name prevData suggests that it's an array of data.
+      //The spread operator (...) is used to include all the elements of prevData in the new array.
+    } catch (error) {
+      console.error('Error adding item:', error.message);
+    }
+  };
    //===============MEDIA TYPES===================
   // Media types for the dropdown
   const mediaTypes = [
