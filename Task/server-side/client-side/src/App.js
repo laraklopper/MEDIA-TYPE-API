@@ -3,79 +3,77 @@ import './App.css';//Import css stylesheet
 import Button from 'react-bootstrap/Button'; // Import Bootstrap Button component
 
 //App function component
-export default function App() {//Export default app function component
+export default function App() {//Export default function component
   //========== State variables=====================
-  
-  const [error, setError] = useState(null);// State for error handling
+   const [error, setError] = useState(null);// State for error handling
   const [term, setTerm] = useState('');// State for the term input
   const [type, setType] = useState('');// State for the type input
   const [data, setData] = useState([]);// State to store fetched data
   const [isLoaded, setIsLoaded] = useState(false);// State to track loading status
 
-
-
-  //=============== FETCH API DATA ============
-
-
-useEffect (() => {
-  async function fetchData() {
-    try {
-      const response = await fetch('http://localhost:3001/api/submit-form')
-      if (!response.ok) {
-        throw new Error()
+    //=============== FETCH API DATA ============
+  // Fetch initial data from the server when the component mounts
+  useEffect(() => {
+    async function fetchData() {//Define the asynchronous function to fetch data
+      try {
+        const response = await fetch('http://localhost:3001/api/submit-form');// Fetch request to the specified endpoint
+        // Conditional rendering to check the 'ok' property of the 'response' object is false.
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        const jsonData = await response.json();
+        setTerm(jsonData[0].term);
+        setIsLoaded(true);
+      } 
+        
+        catch (error) {// Result if an error occurs during the fetch
+        console.error('Error fetching data:', error);
+        setError('Failed to load the data');
+        setIsLoaded(true);
       }
-      const jsonData = await response.json()
-      setTerm(jsonData)
-      setIsLoaded(true)
-    } catch (error) {
-      console.error('Error fetching data:', error);
-      setError('Failed to load the data');
-      setIsLoaded(true)
     }
-  }
-  fetchData()
+    fetchData();//Call the fetchdata function
+  }, []);// Empty dependency array means this effect runs only once after the initial render
 
-},[]);
+  //=============EVENT LISTENERS====================
 
-//=============EVENT LISTENERS====================
-
-
-  // Handle form submission
+  // Handle the search form submission
   const handleSearch = async (event) => {
     event.preventDefault();
     try {
-      // Fetch data from iTunes API based on 'type' and 'term' for search
-      const response = await fetch(`https://itunes.apple.com/search?term=${term}+&entity=${type}`);
+      const response = await fetch(`https://itunes.apple.com/search?term=${term}+&entity=${type}`);//Api URL
 
+      // Conditional rendering to check the 'ok' property of the 'response' is false.
       if (!response.ok) {
         throw new Error(`Network response was not ok: ${response.status} ${response.statusText}`);
       }
 
       const searchData = await response.json();
       setData(searchData.results);
-      console.log(searchData)
-    } catch (error) {
+    } 
+      //Handle errors 
+      catch (error) {// Result if an error occurs during the fetch
       console.error('Error fetching data:', error.message);
+      setError('Failed to load data');
     }
-    
   };
-  
 
-  //===============MEDIA TYPES===================
+   //===============MEDIA TYPES===================
+  // Media types for the dropdown
   const mediaTypes = [
-    { name: "MUSIC", value: "music" },
-    { name: "MUSIC VIDEO", value: "musicVideo" },
-    { name: "APPS", value: "software" },
-    { name: "EBOOK", value: "ebook" },
-    { name: "AUDIO BOOK", value: "audiobook" },
-    { name: "PODCAST", value: "podcast" },
-    { name: "MOVIES", value: "movie" },
-    { name: "TV SHOW", value: "tvShow" },
-    { name: "SHORT FILM", value: "shortFilm" },
+    { name: 'MUSIC', value: 'music' },
+    { name: 'MUSIC VIDEO', value: 'musicVideo' },
+    { name: 'APPS', value: 'software' },
+    { name: 'EBOOK', value: 'ebook' },
+    { name: 'AUDIO BOOK', value: 'audiobook' },
+    { name: 'PODCAST', value: 'podcast' },
+    { name: 'MOVIES', value: 'movie' },
+    { name: 'TV SHOW', value: 'tvShow' },
+    { name: 'SHORT FILM', value: 'shortFilm' },
   ];
-  
-  //==============JSX RENDERING=====================
 
+  //===================JSX RENDERING===============
+  
   return (
     <>
       {/* Header */}
@@ -87,8 +85,8 @@ useEffect (() => {
         <section id='section1'>
           {/* Form for user input */}
           <form id="form" onSubmit={handleSearch}>
-            <label className='label'>NAME</label>
             {/* Input field for 'term' */}
+            <label className='label'>NAME</label>
             <input
               type="text"
               placeholder="name"
@@ -96,21 +94,18 @@ useEffect (() => {
               onChange={(e) => setTerm(e.target.value)}
             />
 
+            {/* Dropdown for 'type' */}
             <label className='label'>MEDIA TYPE</label>
-            {/* Input field for 'type' */}
-            <select>
-              {mediaTypes.map((mediaTypes, i)=>(
-                
-                <option
-                value={mediaTypes.value}
-                key={i}
-                onChange={(e) => setType(e.currentTarget.value)}
-                >{mediaTypes.value}</option>
+            <select value={type} onChange={(e) => setType(e.target.value)}>
+              {mediaTypes.map((mediaType) => (
+                <option key={mediaType.value} value={mediaType.value}>
+                  {mediaType.name}
+                </option>
               ))}
             </select>
 
             {/* Submit button */}
-            <Button type="submit" variant="primary" id='searchBtn' onClick={handleSearch}>
+            <Button type="submit" variant="primary" id='searchBtn'>
               SEARCH
             </Button>
           </form>
@@ -118,16 +113,14 @@ useEffect (() => {
         {/* Section 2 */}
         <section id='section2'>
           {/* Display search results or loading/error message */}
-
           {error ? (
             <div className="errorMessage">{error}</div>
           ) : !isLoaded ? (
             <p>Loading...</p>
           ) : data.length > 0 ? (
             <ul>
-                  {/* Display each item in the 'data' array */}
-              {data.map((item,i) => (
-                <li key={item.i}>{item.name}</li>
+              {data.map((item) => (
+                <li key={item.trackId}>{item.trackName}</li>
               ))}
             </ul>
           ) : (
@@ -136,6 +129,5 @@ useEffect (() => {
         </section>
       </div>
     </>
-  
   );
 }
