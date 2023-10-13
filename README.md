@@ -5,7 +5,8 @@
 2. [How to use the app](#how-to-use-the-application)
 3. [Security measures](#security-measures)
 4. [Link to deployed app](#link-to-deployed-app)
-5. [References](#references)
+5. [API LINK](#api-link)
+6. [References](#references)
 
 ## HOW TO RUN THE APPLICATION
 
@@ -15,6 +16,8 @@
 
 ## LINK TO DEPLOYED APP
 
+## API LINK
+https://itunes.apple.com/search?term=${term}+&entity=${type}
 ## REFERENCES
 - https://www.npmjs.com/package/helmet?activeTab=readme
 - https://developer.apple.com/documentation/applemusicapi/handling_requests_and_responses
