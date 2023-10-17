@@ -18,6 +18,8 @@ export default function App() {//Export default App function component
       try {
         const response = await fetch('http://localhost:3001/submit-form');//Make a GET request Fetch data to the specified endpoint
 
+        setError(false)
+
         //Conditional rendering to check the 'ok' property of the response object
         if (!response.ok) {
           throw new Error();//Throw an error message if the request is unsuccessful
