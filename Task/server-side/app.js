@@ -1,15 +1,17 @@
 const express = require('express');  // Import Express.js web framework to build the web server
+const helmet = require ("helmet");// Import helmet middleware for security headers
 const bodyParser = require('body-parser');  // Import bodyParser middleware to parse request bodies
 const cors = require('cors');  // Import cors middleware to handle Cross-Origin Resource Sharing
 const app = express();  // Create an Express application
 const port = process.env.PORT || 3001;  // Define the port for the server to listen on
-const helmet = require ("helmet");// Import helmet middleware for security headers
+
 
 //=================SETUP MIDDLEWARE======================
 app.use(bodyParser.urlencoded({ extended: false }));  // Parse incoming requests with payloads attached to it
 app.use(bodyParser.json());  // Returns middleware that parses and requests where the Content-Type matches the type option.
 app.use(cors());  // Enables CORS for handling cross-origin requests.
 app.use(helmet());// Middleware to secure Express app by setting HTTP response headers.
+
 //=====================DATA STORAGE============================
 // Array to store items 
 let items = [];
@@ -69,7 +71,7 @@ function getItemById(trackId) {
     return items.find((item) => item.trackId === trackId); // Find the item by trackID
 }
 
-//====================START THE SERVE==================================
+//====================START THE SERVER==================================
 // Start the server and listen on the specified port
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}`); // Display a message in the console indicating that the server is running.
