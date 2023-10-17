@@ -17,10 +17,6 @@
 
 ## LINK TO DEPLOYED APP
 
-## TASK API LINK
-https://itunes.apple.com/search?term=${term}+&entity=${type}
-
-
 
 ## REFERENCES
 - https://www.npmjs.com/package/helmet?activeTab=readme
@@ -29,3 +25,4 @@ https://itunes.apple.com/search?term=${term}+&entity=${type}
 - https://developer.apple.com/documentation/applemusicapi/generating_developer_tokens
 - https://www.tutorialspoint.com/express-js-express-json-function
 - https://expressjs.com/en/advanced/best-practice-security.html#use-helmet
+- https://itunes.apple.com/search?term=${term}+&entity=${type}
