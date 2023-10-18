@@ -1,10 +1,9 @@
 const express = require('express');  // Import Express.js web framework to build the web server
-const helmet = require ("helmet");// Import helmet middleware for security headers
+const helmet = require('helmet');// Import helmet middleware for security headers
 const bodyParser = require('body-parser');  // Import bodyParser middleware to parse request bodies
 const cors = require('cors');  // Import cors middleware to handle Cross-Origin Resource Sharing
 const app = express();  // Create an Express application
 const port = process.env.PORT || 3001;  // Define the port for the server to listen on
-
 
 //=================SETUP MIDDLEWARE======================
 app.use(bodyParser.urlencoded({ extended: false }));  // Parse incoming requests with payloads attached to it
@@ -13,62 +12,61 @@ app.use(cors());  // Enables CORS for handling cross-origin requests.
 app.use(helmet());// Middleware to secure Express app by setting HTTP response headers.
 
 //=====================DATA STORAGE============================
-// Array to store items 
-let items = [];
+// In-memory array used to store the data 
+let data = [];
 
 //========================REQUESTS================================
 //------------------GET REQUEST-------------------------
 // Handle GET request to '/submit-form'
 app.get('/submit-form', (req, res) => {
-    // Extract query parameters from the request
-    const term = req.query.term; // Get the term from the query parameter
-    const type = req.query.type; // Get the type from the query parameter
-
-    // Send a JSON response with the extracted parameters
-    res.json({ term, type, message: 'Received your request!' });
+    res.json(data);    // Send a JSON response containing the data array
+//provide a JSON representation of the data stored on the server when a GET request is made to '/submit-form'.
 });
 
 //---------------------------POST REQUEST------------------------------
+//Post endpoint to add new data
 // Handle POST request to '/api/add-item'
 app.post('/api/add-item', (req, res) => {
     try {
-        const newItem = req.body; // Extract the new item from the request body
+        const newItem = req.body;        // Extract the new item data from the request body
 
         // Check if valid data is received
-        if (!newItem) {
-            throw new Error('Invalid data received');
+        if (!isValidItem(newItem)) {
+            throw new Error('Invalid data received'); // If data is not valid, throw an error
         }
 
-        items.push(newItem); // Add the new item to the 'items' array
+        data.push(newItem);        // Add the new item to the 'items' array
+
 
         // Send a JSON response with the added item
-        res.json(newItem);
+        res.status(201).json(newItem); // 201 Created status for successful POST requests
 
-    } catch (error) {
-        // Handle errors and send a 500 Internal Server Error response
+    } 
+    catch (error) {
+        // Handle errors that may occur during the POST request
         console.error('Error adding item:', error.message);
-        res.status(500).json({ error: 'Failed to add new item' });
+        res.status(500).json({ error: 'Failed to add new item' });// Send an error response with a 500 status code
+
     }
 });
+//=====================DELETE ENDPOINT=====================
+//Delete endpoint to remove data
+app.delete('/api/:trackId', (req, res) => {
+    // Extract the trackId parameter from the URL
+    const trackId = req.params.trackId
 
-//=========================FUNCTIONS====================================
-// Function to get all items
-function getAllItems() {
-    return items;
-}
+    // Filter out the item with the specified trackId from the data array
+    data = data.filter((item) => item.trackId !== trackId);
 
-// Function to delete an item by trackId
-function deleteItem(trackId) {
-    const index = items.findIndex((item) => item.trackId === trackId); // Callback function
+    //Respond with success and status 200
+    res.status(200).json({ success: true })
+})
 
-    if (index !== -1) { // Remove the item from the 'items' array
-        items.splice(index, 1);
-    }
-}
-
-// Function to get an item by trackId
-function getItemById(trackId) {
-    return items.find((item) => item.trackId === trackId); // Find the item by trackID
+//======================FUNCTIONS============================
+// Function to check if an item is valid
+function isValidItem(item) {
+    // Customise this function based on the expected structure of items
+    return item && item.trackId && item.artistName && item.trackName && item.kind;
 }
 
 //====================START THE SERVER==================================
