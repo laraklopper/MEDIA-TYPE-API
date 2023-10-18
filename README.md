@@ -22,14 +22,17 @@ For security the Express.js backend server uses helmet which middleware installe
    const express = require('express');// Import Express.js web framework to build the web server
    const helmet = require('helmet');// Import helmet middleware for security headers
    const app = express();// Create an Express application
+   const port = process.env.PORT || 3001;// Define the port for the server to listen on
 
+  //===========SETUP MIDDLEWARE=======================
    app.use(helmet());// Middleware to secure Express app by setting HTTP response headers.
 
-    const port = process.env.PORT || 3001;
-
-     app.listen(port, () => {
-          console.log(`Server is listening on port ${port}`); // Display a message in the console indicating that the server is running.
-      });
+    
+   //====================START THE SERVER==================================
+   // Start the server and listen on the specified port
+   app.listen(port, () => {
+       console.log(`Server is listening on port ${port}`); // Display a message in the console indicating that the server is running.
+   });
    ```
 
 
