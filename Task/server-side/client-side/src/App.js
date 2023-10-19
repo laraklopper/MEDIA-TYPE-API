@@ -116,15 +116,12 @@ export default function App() {//Export default App function component
 
   return (
     <>
+        {/* App body */}
       <div id='appBody'>
+            {/* AppContainer */}
         <Container id='appContainer'>
           {/* Header */}
-          <header id="header">
-            {/* Row 1 */}
-            <Row className='row'>
-              <Col><h1 className="h1">ITUNES API</h1></Col>
-            </Row>
-          </header>
+         <Header/>
           {/* Section 1 */}
           <section id="section1">
             {/* Row 2 */}
@@ -150,42 +147,50 @@ export default function App() {//Export default App function component
                 ) : !isLoaded ? (
                   <p>Loading...</p>
                 ) : (
-                  <ul id="itemsList">
+                  <dl id="itemsList">
+                              {/* Map through the 'data' array to render each item */}
                     {data.map((item) => (
-                      <li key={item.trackId}>
-                        <label><h3 className='h3'>{item.artistName}</h3></label><br />
-                        <label><h5>TITLE:</h5><p>{item.trackName}</p></label><br />
-                        <label><h5>TYPE:</h5><p>{item.kind}</p></label><br />
+                      <dt key={item.trackId}>
+                        <h3 className='h3'>{item.artistName}</h3>{/* Display artist name */}
+                        <dd className='description'><h4 className='h4'>TITLE:</h4><h5 className='h5'>{item.trackName}</h5></dd>{/* Display title of the track */}
+                        <dd className='description'><h4 className=''>TYPE:</h4><h5 className='h5'>{item.kind}</h5></dd>{/* Display the type of the track */}
                         {/* Delete button for each item */}
+                       <dd className="descriptionBtn">
                         <Button
                           variant='primary'
                           id="deleteBtn"
-                          onClick={() => deleteItem(item.trackId)}
+                          onClick={() => deleteItem(item.trackId)}//onClick eventlistener used to delete an item.
                         >
                           DELETE
-                        </Button><br />
-                        <Button
-                          variant="primary"
-                          onClick={() => addToFavorites(item)}
-                          id="addButton"
-                        >
-                          ADD TO FAVOURITES
                         </Button>
-                      </li>
+                            </dd>
+                          {/* Button used add to list favourites */}
+                        <dd className="descriptionBtn">
+                        <Button
+                            variant="primary"
+                            onClick={() => onAddToFavourites(item)}//onClick eventlistener used to add a item to the list of favourites
+                            id="addButton"
+                              >
+                            ADD TO FAVOURITES
+                        </Button>
+                    </dd>
+                      </dt>
                     ))}
-                  </ul>
+                  </dl>
                 )}
               </Col>
               {/* Column containing favorites list */}
               <Col id='favCol'>
                 {/* Favorites list */}
                 <h2 className='h2'>FAVOURITES</h2>
-                <ul className="favouritesList">
+                <dl className="favouritesList">
+                  {/* Map through the Favourites array to render each Favourite */}
                   {favourites.map((fav) => (
-                    <li key={fav.trackId}>
+                    <dt key={fav.trackId} className="favTitle">
                       <h3 className='h3'>{fav.artistName}:</h3>
-                      <label><h5 className='h5' >TITLE:</h5><p>{fav.trackName}</p></label><br />
-                      <label><h5 className='h5'>TYPE:</h5><p>{fav.kind}</p></label>
+                        <dd className='description'><h4 className='h4'>TITLE:</h4><h5 className='h5'>{fav.trackName}</h5></dd>
+                        <dd className='description'><h4 className='h4'>TYPE:</h4><h5 className='h5'> {fav.kind}</h5> </dd>
+  <dd className>
                       <Button
                         variant='primary'
                         id="deleteFavBtn"
@@ -193,9 +198,10 @@ export default function App() {//Export default App function component
                       >
                         DELETE FROM FAVOURITES
                       </Button>
-                    </li>
+                          </dd>
+                    </dt>
                   ))}
-                </ul>
+                </dl>
               </Col>
             </Row>
           </section>
