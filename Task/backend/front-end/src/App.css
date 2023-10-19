@@ -1,0 +1,218 @@
+/* Body */
+body{
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  display: block;
+  background-color: #8c8c8c;
+}
+/* Root */
+#root {
+  width: 100%;
+  display: block;
+  margin: 0px;
+  padding: 0px;
+
+}
+/* AppBody */
+#appBody {
+  display: block;
+  overflow-x: hidden;
+  margin: 5px;
+}
+/* Container */
+#appContainer{
+  display: grid;
+  width: 100%;        
+  padding: 0px;
+      }
+/* Header */
+#header{
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 10px;
+  display: block;
+  background-color: #737373;
+}
+#heading{
+  overflow: hidden;
+  display: flex;
+    justify-content: center;
+    margin: 10px;
+    padding: 0px;
+}
+.h1{
+  font-weight: bold;
+  font-family: cursive;
+  font-size: 38px;
+}
+/* section1 */
+#section1{
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding-bottom: 15px;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 15px;
+    background-color: #C9C9C9;
+}
+/* form */
+#form{
+  width: 100%;
+  display: flex;
+  margin: 0px;
+  padding: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+}
+.input{
+  display: inline-block;
+  font-family: monospace;
+  text-align: center;
+}
+.label{
+  font-family: monospace;
+  margin-right: 5px;
+  margin-left: 5px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  padding: 5px;
+  font-weight: bold;
+  font-size: 24px;
+}
+.options{
+  display: block;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#searchBtn{
+  display: block;
+  padding:10px;
+  margin-left: 10px;
+}
+#addButton{
+  font-family: monospace;
+      display: block;
+      margin-left: 0px;
+        margin-top: 2px;
+        margin-bottom: 2px;
+        margin-right: 5px;
+}
+#deleteBtn{
+        margin-left: 0px;
+        margin-top: 2px;
+        margin-bottom: 2px;
+        margin-right: 5px;
+        font-family: monospace;
+          display: block;
+}
+.h2{
+  text-align: center;
+  font-family: cursive;
+  font-weight: bold;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+/* Section 2 */
+#section2{
+  display: block;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 10px;
+    background-color: silver;
+}
+/* Output */
+
+.errorMessage{
+  padding:  5px;
+  font-family: sans-serif;
+  font-size: 24px;
+  text-align: center;
+  font-weight: 900;
+  
+}
+/* API output */
+/* Api Data */
+#dataCol {
+  padding: 0px;
+  display: block;
+  background-color: #737373;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.itemsList{
+  margin: 5px;
+  
+}
+.desTitle{
+    display: block;
+    background-color: #C9C9C9;
+    padding: 5px;
+    margin-bottom: 2px;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.h3{
+  font-size: 28px;
+    font-family: monospace;
+    font-weight: 800;
+    display: block;
+}
+.h4{
+      font-family: monospace;
+        font-weight: 700;
+        font-size: 24px;
+            display: inline-block;
+}
+.h5{
+  font-family: monospace;
+    margin-left: 10px;
+    margin-bottom: 0px;
+    display: inline-block;
+    font-size: 22px;
+}
+
+
+/* Favourites list */
+#favCol{
+    margin-left: 5px;
+      margin-right: 5px;
+      margin-top: 0px;
+      margin-bottom: 0px;
+    padding: 0px;
+    display: block;
+    background-color: #a6a6a6;
+}
+.favTitle{
+  display: block;
+    background-color: #C9C9C9;
+    padding: 5px;
+    margin-bottom: 2px;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+
+}
+
+.description{
+  display: flex;
+  flex-direction: row;
+}
