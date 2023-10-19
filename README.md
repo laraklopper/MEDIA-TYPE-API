@@ -10,14 +10,17 @@
 
 ## HOW TO USE THE APPLICATION
 
-To use the app the user must input a name and select a media type. Thereafter the user can add an item from the data to a list of favourites. The app also allows the user to delete a item on the favourites list after adding it to the favourites list.
+To use the app the user must input a name and select a media type. Thereafter the user can add an item from the data to a list of favourites. The app also allows the user to delete a item on the favourites list after adding it to the favourites list.To use the app the user must input a name and select a media type. Thereafter the user can add an item from the data to a list of favourites. The app also allows the user to delete a item on the favourites list after adding it to the favourites list. 
+
+The App uses an Api (Application Programming Interface) to get the relavent data.  When the React app needs data, it makes HTTP requests to the API endpoints exposed by the Express.js server. The Express.js back-end server handles incoming requests from the React.js front-end client and processes them. Once the data is received from the server, React updates its state, and the UI is re-rendered to display the fetched data
 
 The App uses the following API to fetch the data:
 
 `https://itunes.apple.com/search?term=${term}+&entity=${type}`
 
 ## HOW TO RUN THE APPLICATION
-Nodemon allows Node.js based applications by automatically restarting the node application when file changes in the directory are detected. Nodemon is installed as a dependency and allows the express back-end to run using npm start. The React front-end of the can be started in the terminal using npm start. The app can therefore be run using the npm start command in the terminal. To get the front-end and backend to work together the app uses a proxy server.
+
+React is used for building front-end apps that can communicate with the backend server. To get the front-end and backend to work together the app uses a proxy server. To run the app both the back end Express.js and front end React.js servers must be running. Both the Express.js and React.js servers can be run using the `npm start` command terminal. 
 
 ## SECURITY MEASURES
 
@@ -49,5 +52,6 @@ For security the Express.js backend server uses helmet which middleware installe
 - https://developer.apple.com/documentation/applemusicapi/handling_requests_and_responses
 - https://developer.apple.com/documentation/applemusicapi/generating_developer_tokens
 - https://www.tutorialspoint.com/express-js-express-json-function
+- https://www.geeksforgeeks.org/know-the-difference-between-rest-api-and-restful-api/
 - https://expressjs.com/en/advanced/best-practice-security.html#use-helmet
 - https://expressjs.com/en/4x/api.html#app.use 
