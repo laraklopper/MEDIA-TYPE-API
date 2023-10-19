@@ -12,6 +12,10 @@
 
 To use the app the user must input a name and select a media type. Thereafter the user can add an item from the data to a list of favourites. The app also allows the user to delete a item on the favourites list after adding it to the favourites list.
 
+The App uses the following API to fetch the data:
+
+`https://itunes.apple.com/search?term=${term}+&entity=${type}`
+
 ## HOW TO RUN THE APPLICATION
 Nodemon allows Node.js based applications by automatically restarting the node application when file changes in the directory are detected. Nodemon is installed as a dependency and allows the express back-end to run using npm start. The React front-end of the can be started in the terminal using npm start. The app can therefore be run using the npm start command in the terminal. To get the front-end and backend to work together the app uses a proxy server.
 
@@ -46,5 +50,4 @@ For security the Express.js backend server uses helmet which middleware installe
 - https://developer.apple.com/documentation/applemusicapi/generating_developer_tokens
 - https://www.tutorialspoint.com/express-js-express-json-function
 - https://expressjs.com/en/advanced/best-practice-security.html#use-helmet
-- https://itunes.apple.com/search?term=${term}+&entity=${type}
 - https://expressjs.com/en/4x/api.html#app.use 
