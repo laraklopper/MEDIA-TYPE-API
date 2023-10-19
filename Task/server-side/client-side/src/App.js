@@ -5,6 +5,7 @@ import Container from 'react-bootstrap/Container';//Import bootstrap container
 import Row from 'react-bootstrap/Row';//Import bootstrap row 
 import Col from 'react-bootstrap/Col';//Import bootstrap coloumn
 import Form from './components/Form.js';//Import Form function component
+import Header from './components/Header';//Import Header function component
 
 //App function component
 export default function App() {//Export default App function component
@@ -18,6 +19,7 @@ export default function App() {//Export default App function component
 
   //===================FETCH JSON DATA=====================
   // Fetch initial data from the server on component mount
+  
   useEffect(() => {
     async function fetchData() {//Define asynchronous function to fetch data
       try {
@@ -116,12 +118,12 @@ export default function App() {//Export default App function component
 
   return (
     <>
-        {/* App body */}
+      {/* App body */}
       <div id='appBody'>
-            {/* AppContainer */}
+        {/* AppContainer */}
         <Container id='appContainer'>
           {/* Header */}
-         <Header/>
+          <Header />
           {/* Section 1 */}
           <section id="section1">
             {/* Row 2 */}
@@ -148,32 +150,32 @@ export default function App() {//Export default App function component
                   <p>Loading...</p>
                 ) : (
                   <dl id="itemsList">
-                              {/* Map through the 'data' array to render each item */}
+                    {/* Map through the 'data' array to render each item */}
                     {data.map((item) => (
-                      <dt key={item.trackId}>
+                      <dt className='desTitle' key={item.trackId}>
                         <h3 className='h3'>{item.artistName}</h3>{/* Display artist name */}
                         <dd className='description'><h4 className='h4'>TITLE:</h4><h5 className='h5'>{item.trackName}</h5></dd>{/* Display title of the track */}
                         <dd className='description'><h4 className=''>TYPE:</h4><h5 className='h5'>{item.kind}</h5></dd>{/* Display the type of the track */}
                         {/* Delete button for each item */}
-                       <dd className="descriptionBtn">
-                        <Button
-                          variant='primary'
-                          id="deleteBtn"
-                          onClick={() => deleteItem(item.trackId)}//onClick eventlistener used to delete an item.
-                        >
-                          DELETE
-                        </Button>
-                            </dd>
-                          {/* Button used add to list favourites */}
                         <dd className="descriptionBtn">
-                        <Button
+                          <Button
+                            variant='primary'
+                            id="deleteBtn"
+                            onClick={() => deleteItem(item.trackId)}//onClick eventlistener used to delete an item.
+                          >
+                            DELETE
+                          </Button>
+                        </dd>
+                        {/* Button used add to list favourites */}
+                        <dd className="descriptionBtn">
+                          <Button
                             variant="primary"
-                            onClick={() => onAddToFavourites(item)}//onClick eventlistener used to add a item to the list of favourites
+                            onClick={() => addToFavorites(item)}//onClick eventlistener used to add a item to the list of favourites
                             id="addButton"
-                              >
+                          >
                             ADD TO FAVOURITES
-                        </Button>
-                    </dd>
+                          </Button>
+                        </dd>
                       </dt>
                     ))}
                   </dl>
@@ -188,17 +190,17 @@ export default function App() {//Export default App function component
                   {favourites.map((fav) => (
                     <dt key={fav.trackId} className="favTitle">
                       <h3 className='h3'>{fav.artistName}:</h3>
-                        <dd className='description'><h4 className='h4'>TITLE:</h4><h5 className='h5'>{fav.trackName}</h5></dd>
-                        <dd className='description'><h4 className='h4'>TYPE:</h4><h5 className='h5'> {fav.kind}</h5> </dd>
-  <dd className>
-                      <Button
-                        variant='primary'
-                        id="deleteFavBtn"
-                        onClick={() => deleteFavorite(fav.trackId)}
-                      >
-                        DELETE FROM FAVOURITES
-                      </Button>
-                          </dd>
+                      <dd className='description'><h4 className='h4'>TITLE:</h4><h5 className='h5'>{fav.trackName}</h5></dd>
+                      <dd className='description'><h4 className='h4'>TYPE:</h4><h5 className='h5'> {fav.kind}</h5> </dd>
+                      <dd className="description">
+                        <Button
+                          variant='primary'
+                          id="deleteFavBtn"
+                          onClick={() => deleteFavorite(fav.trackId)}
+                        >
+                          DELETE FROM FAVOURITES
+                        </Button>
+                      </dd>
                     </dt>
                   ))}
                 </dl>
