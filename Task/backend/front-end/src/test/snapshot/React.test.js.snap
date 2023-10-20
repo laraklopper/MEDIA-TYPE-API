@@ -1,0 +1,171 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  id="appBody"
+>
+  <div
+    className="container"
+    id="appContainer"
+  >
+    <header
+      id="header"
+    >
+      <div
+        className="row row"
+      >
+        <div
+          className="col"
+          id="heading"
+        >
+          <h1
+            className="h1"
+          >
+            ITUNES API
+          </h1>
+        </div>
+      </div>
+    </header>
+    <section
+      id="section1"
+    >
+      <div
+        className="row"
+        id="formRow"
+      >
+        <form
+          id="form"
+          onSubmit={[Function]}
+        >
+          <div
+            className="col"
+          >
+            <label
+              className="label"
+            >
+              NAME:
+            </label>
+            <input
+              className="input"
+              onChange={[Function]}
+              placeholder="Name"
+              type="text"
+              value=""
+            />
+            <label
+              className="label"
+            >
+              MEDIA TYPE:
+            </label>
+            <select
+              onChange={[Function]}
+              value=""
+            >
+              <option
+                className="options"
+                value="music"
+              >
+                MUSIC
+              </option>
+              <option
+                className="options"
+                value="musicVideo"
+              >
+                MUSIC VIDEO
+              </option>
+              <option
+                className="options"
+                value="software"
+              >
+                APPS
+              </option>
+              <option
+                className="options"
+                value="ebook"
+              >
+                EBOOK
+              </option>
+              <option
+                className="options"
+                value="audiobook"
+              >
+                AUDIO BOOK
+              </option>
+              <option
+                className="options"
+                value="podcast"
+              >
+                PODCAST
+              </option>
+              <option
+                className="options"
+                value="movie"
+              >
+                MOVIES
+              </option>
+              <option
+                className="options"
+                value="tvShow"
+              >
+                TV SHOW
+              </option>
+              <option
+                className="options"
+                value="shortFilm"
+              >
+                SHORT FILM
+              </option>
+            </select>
+          </div>
+          <div
+            className="col"
+          >
+            <button
+              className="btn btn-primary"
+              disabled={false}
+              id="searchBtn"
+              type="submit"
+            >
+              SEARCH
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+    <section
+      id="section2"
+    >
+      <div
+        className="row"
+      >
+        <div
+          className="col"
+          id="dataCol"
+        >
+          <h2
+            className="h2"
+          >
+            API DATA
+          </h2>
+          <p>
+            Loading...
+          </p>
+        </div>
+        <div
+          className="col"
+          id="favCol"
+        >
+          <h2
+            className="h2"
+          >
+            FAVOURITES
+          </h2>
+          <dl
+            className="favouritesList"
+          />
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+`;
