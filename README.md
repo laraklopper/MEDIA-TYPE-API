@@ -10,8 +10,7 @@
 
 ## HOW TO USE THE APPLICATION
 
-To use the app the user must input a name and select a media type. Thereafter the user can add an item from the data to a list of favourites. The app also allows the user to delete a item on the favourites list after adding it to the favourites list.To use the app the user must input a name and select a media type. Thereafter the user can add an item from the data to a list of favourites. The app also allows the user to delete a item on the favourites list after adding it to the favourites list. 
-
+To use the app the user must input a name and select a media type. Thereafter the user can add an item from the data to a list of favourites. The app also allows the user to delete a item on the favourites list after adding it to the favourites list and also to delete an item from the favourites list. 
 The App uses an Api (Application Programming Interface) to get the relavent data.  When the React app needs data, it makes HTTP requests to the API endpoints exposed by the Express.js server. The Express.js back-end server handles incoming requests from the React.js front-end client and processes them. Once the data is received from the server, React updates its state, and the UI is re-rendered to display the fetched data
 
 The App uses the following API to fetch the data:
@@ -71,4 +70,5 @@ Helmet also has various options to enable and disable headers according to and t
 - https://www.geeksforgeeks.org/know-the-difference-between-rest-api-and-restful-api/
 - https://expressjs.com/en/advanced/best-practice-security.html#use-helmet
 - https://expressjs.com/en/4x/api.html#app.use
-- https://www.geeksforgeeks.org/rest-api-introduction/ 
+- https://www.geeksforgeeks.org/rest-api-introduction/
+- https://www.digitalocean.com/community/tutorials/how-to-write-snapshot-tests-for-react-components-with-jest
