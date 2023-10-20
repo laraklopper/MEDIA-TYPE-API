@@ -9,7 +9,18 @@ const port = process.env.PORT || 3001;  // Define the port for the server to lis
 app.use(bodyParser.urlencoded({ extended: false }));  // Parse incoming requests with payloads attached to it
 app.use(bodyParser.json());  // Returns middleware that parses and requests where the Content-Type matches the type option.
 app.use(cors());  // Enables CORS for handling cross-origin requests.
-app.use(helmet());// Middleware to secure Express app by setting HTTP response headers.
+
+//------------HELMET MIDDLEWARE TO SECURE THE EXPRESS APP----------------------
+app.use(
+    helmet({
+        contentSecurityPolicy: {
+            directives: {
+                "script-src": ["'self'"],
+                "style-src": null,
+            },
+        },
+    })
+);
 
 //=====================DATA STORAGE============================
 // In-memory array used to store the data 
