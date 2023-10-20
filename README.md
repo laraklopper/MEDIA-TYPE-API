@@ -41,9 +41,10 @@ For security the Express.js backend server uses helmet which middleware installe
        console.log(`Server is listening on port ${port}`); // Display a message in the console indicating that the server is running.
    });
    ```
-```
-npm i -
 
+```
+    npm install helmet
+```
 ## LINK TO DEPLOYED APP
 
 
