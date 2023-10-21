@@ -24,8 +24,8 @@ The React front-end of the can be started in the terminal using npm start. The a
 
 ## SECURITY MEASURES
 
+The app uses Cross-Origin Resource Sharing (CORS)  and helmet middleware in the Express.js backend server. CORS is a HTTP-Header based system thich is implemented by the browser to specifying the origins that can make requests to the browser. Helmet provides a set that help secure an Express.js application by setting various HTTP headers. The purpose of Helmet is to help secure an Express.js application against security threats.Helmet is designed to be easy to use, and does not typically require that don't need to configure each header individually. Instead it is used as a collection of headers that help improve security. The app.use method is used to mount the middleware. 
 
-For security the Express.js backend server uses helmet which middleware installed to secure the Express app by setting up several HTTP response headers. The app.use method is used to mount the middleware.  These headers include protection against common security vunerabilities.
    ```javascript
    const express = require('express');// Import Express.js web framework to build the web server
    const helmet = require('helmet');// Import helmet middleware for security headers
