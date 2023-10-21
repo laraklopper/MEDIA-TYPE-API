@@ -26,7 +26,9 @@ app.use(cors({
 app.use(helmet());
 
 //================SERVE STATIC FILES FROM THE SPECIFIED DIRECTORY=======================
-app.use(express.static(path.join(__dirname, 'backend')));// Use the 'express.static' middleware to serve static files
+app.use(express.static(path.join(__dirname, 'front-end/src/')));// Use the 'express.static' middleware to serve static files
+app.use(express.static(path.join(__dirname, 'front-end/src/components')));// Use the 'express.static' middleware to serve static files
+app.use(express.static(path.join(__dirname, 'front-end/public')));// Use the 'express.static' middleware to serve static files
 
 
 //=======================DATA STORAGE================================
