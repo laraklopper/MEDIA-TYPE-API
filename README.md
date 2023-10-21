@@ -33,6 +33,13 @@ The app uses Cross-Origin Resource Sharing (CORS)  and helmet middleware in the 
    const port = process.env.PORT || 3001;// Define the port for the server to listen on
 
   //===========SETUP MIDDLEWARE=======================
+
+   app.use(cors({
+     origin: 'http://localhost:3000',  // Allow requests from the specified origin
+     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',  // Specify the allowed HTTP methods for cross-origin requests
+     credentials: true,// Allow credentials to be included in cross-origin requests 
+     optionsSuccessStatus: 204,  // Set the HTTP status code for successful preflight OPTIONS requests to 204 (No Content)
+   }));
    app.use(helmet());// Middleware to secure Express app by setting HTTP response headers.
 
     
@@ -43,9 +50,6 @@ The app uses Cross-Origin Resource Sharing (CORS)  and helmet middleware in the 
    });
    ```
 
-```
-
-```
 
 
 ## LINK TO DEPLOYED APP
