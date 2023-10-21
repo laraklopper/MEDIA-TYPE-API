@@ -13,14 +13,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //Security middleware
+// CORS work by adding new HTTP request headers that let servers describe which origins are permitted to read that info from a web browser
 // Enable CORS for specified origin, allowing certain HTTP methods, handling credentials, and defining options success status
+// Use the 'cors' middleware with specified options
 app.use(cors({
   origin: 'http://localhost:3000',  // Allow requests from the specified origin
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',  // Specify the allowed HTTP methods for cross-origin requests
   credentials: true,// Allow credentials to be included in cross-origin requests 
   optionsSuccessStatus: 204,  // Set the HTTP status code for successful preflight OPTIONS requests to 204 (No Content)
 }));
-//Preflight requests are sent by browsers as a safety mechanism before making certain types of cross-origin requests. 
+// Preflight requests are sent by browsers as a safety mechanism before making certain types of cross-origin requests. 
 // A status code of 204 (No Content) indicates that the preflight request was successful.
 
 // Set various HTTP headers to enhance security
