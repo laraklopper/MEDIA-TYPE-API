@@ -10,6 +10,7 @@ import Header from './components/Header';//Import Header function component
 // App component function component
 export default function App() {//Export default App function component
   // ================STATE VARIABLES======================
+  //Initialise the use state variable
   const [error, setError] = useState(null);//State used to store error information
   const [isLoaded, setIsLoaded] = useState(false);//State used to track whether data is loaded
   const [term, setTerm] = useState('');//State used to store term input
