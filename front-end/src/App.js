@@ -71,7 +71,7 @@ export default function App() {//Export default App function component
     }
     catch (error) {
       // Handle errors that may occur during the fetch operation
-      console.error('Error fetching data:', error.message);
+      console.error('Error fetching data:', error.message);// Log an error message to the console for debugging purposes
       setError('Failed to fetch search results');// Set the error state with a message indicating the failure
     }
   };
