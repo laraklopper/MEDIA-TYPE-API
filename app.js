@@ -13,14 +13,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //Security middleware
-// Enable CORS for specified origin, allowing certain HTTP methods, handling credentials, and defining options success status
-// Use the 'cors' middleware with specified options
-app.use(cors({
-  origin: 'http://localhost:3000',  // Allow requests from the specified origin
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',  // Specify the allowed HTTP methods for cross-origin requests
-  credentials: true,  // Allow credentials to be included in cross-origin requests (e.g., cookies, HTTP authentication)
-  optionsSuccessStatus: 204,  // Set the HTTP status code for successful preflight OPTIONS requests to 204 (No Content)
-}));
+// Use the 'cors' middleware 
+app.use(cors());
 
 // Set various HTTP headers to enhance security
 app.use(helmet());
