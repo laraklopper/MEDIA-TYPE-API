@@ -2,7 +2,7 @@ const express = require('express'); // Web framework for handling HTTP requests
 const helmet = require('helmet'); // Middleware for setting various HTTP headers for security
 const bodyParser = require('body-parser'); // Middleware for parsing request bodies
 const cors = require('cors'); // Middleware for enabling Cross-Origin Resource Sharing
-const path = require('path'); // Module for working with file and directory path
+
 const app = express();// Create an Express application
 const port = process.env.PORT || 3001;// Define the port for the server to listen on
 
@@ -18,11 +18,6 @@ app.use(cors());
 
 // Set various HTTP headers to enhance security
 app.use(helmet());
-
-//================SERVE STATIC FILES FROM THE SPECIFIED DIRECTORY=======================
-app.use(express.static(path.join(__dirname, 'front-end/src/')));// Use the 'express.static' middleware to serve static files
-app.use(express.static(path.join(__dirname, 'front-end/src/components')));// Use the 'express.static' middleware to serve static files
-app.use(express.static(path.join(__dirname, 'front-end/public')));// Use the 'express.static' middleware to serve static files
 
 
 //=======================DATA STORAGE================================
