@@ -24,13 +24,14 @@ export default function Form({ term, setTerm, type, setType, handleSearch }) {//
     <form id='form' onSubmit={handleSearch}>
         <Col>
         {/* Input for term */}
-          <label className='label'>NAME:</label>
+          <label className='label' htmlFor='termInput'>NAME:</label>
           <input
             type='text'
             placeholder='Name'
             value={term}
              onChange={(e) => setTerm(e.target.value)}// onChange event used to update the type state when the user enters input
             className='input'
+              id='termInput'
           />
           {/* Input for mediatype */}
           <label className='label'>MEDIA TYPE:</label>
@@ -52,11 +53,14 @@ export default function Form({ term, setTerm, type, setType, handleSearch }) {//
         </Col>
         <Col>
         {/* Search Button */}
-          <Button type="submit" variant="primary" id="searchBtn">
+          <Button 
+              type="submit" 
+              variant="primary" 
+                id="searchBtn"
+                  >
             SEARCH
           </Button>
         </Col>
-     
     </form>
   );
 };
