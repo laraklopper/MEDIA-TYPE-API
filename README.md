@@ -21,9 +21,10 @@ The App uses the following API to fetch the data:
 
 ## HOW TO RUN THE APPLICATION
 
-The React front-end of the can be started in the terminal using npm start. The app can therefore be run using the npm start command in the terminal. To get the front-end and backend to work together the app uses a proxy server.
-
-
+The React front-end of the can be started in the terminal using npm start. The app can therefore be run using the npm start command in the terminal. To get the front-end and backend to work together the app uses a proxy server found in the `package.json` foleder in the front-end.
+```
+http://localhost:3001
+```
 ## SECURITY MEASURES
 
 The app uses Cross-Origin Resource Sharing (CORS)  and helmet middleware in the Express.js backend server. CORS is a HTTP-Header based system thich is implemented by the browser to specifying the origins that can make requests to the browser. Helmet provides a set that help secure an Express.js application by setting various HTTP headers. The purpose of Helmet is to help secure an Express.js application against security threats.Helmet is designed to be easy to use, and does not typically require that don't need to configure each header individually. Instead it is used as a collection of headers that help improve security. The app.use method is used to mount the middleware. 
