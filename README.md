@@ -21,7 +21,7 @@ The App uses the following API to fetch the data:
 
 ## HOW TO RUN THE APPLICATION
 
-The React front-end of the can be started in the terminal using npm start. The app can therefore be run using the npm start command in the terminal. To get the front-end and backend to work together the app uses a proxy server found in the `package.json` foleder in the front-end.
+The React front-end of the can be started in the terminal using npm start. The app can therefore be run using the npm start command in the terminal. To get the front-end and backend to work together the app uses a proxy server found in the `package.json` folder in the front-end.
 ```
 http://localhost:3001
 ```
